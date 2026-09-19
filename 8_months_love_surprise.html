@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffb199);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .hearts span {
+    position: fixed;
+    bottom: -40px;
+    font-size: 24px;
+    animation: float 7s linear infinite;
+    opacity: .8;
+  }
+  .hearts span:nth-child(1){left:8%;animation-delay:0s}
+  .hearts span:nth-child(2){left:20%;animation-delay:2s}
+  .hearts span:nth-child(3){left:35%;animation-delay:4s}
+  .hearts span:nth-child(4){left:52%;animation-delay:1s}
+  .hearts span:nth-child(5){left:68%;animation-delay:3s}
+  .hearts span:nth-child(6){left:82%;animation-delay:5s}
+  @keyframes float {
+    to { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+  }
+  .card {
+    width: min(90%, 430px);
+    padding: 38px 28px;
+    text-align: center;
+    background: rgba(255,255,255,.18);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(120, 20, 60, .25);
+    position: relative;
+    z-index: 2;
+  }
+  .tiny { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+  h1 { font-size: 34px; margin: 12px 0 8px; }
+  p { line-height: 1.6; font-size: 17px; }
+  button {
+    border: 0;
+    padding: 15px 25px;
+    border-radius: 999px;
+    background: #fff;
+    color: #e94d7b;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,.18);
+  }
+  .message {
+    display: none;
+    animation: pop .6s ease;
+  }
+  @keyframes pop {
+    from { transform: scale(.75); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .big { font-size: 27px; font-weight: 900; }
+  .love { font-size: 40px; margin: 12px 0; }
+  .signature { margin-top: 22px; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="hearts">
+  <span>❤️</span><span>💗</span><span>💕</span><span>💖</span><span>💘</span><span>❤️</span>
+</div>
+
+<div class="card">
+  <div id="intro">
+    <div class="tiny">pssst... this is for you 👀</div>
+    <h1>Someone has a confession 🥺</h1>
+    <p>But first… you have to press the button. No cheating. 😤❤️</p>
+    <button onclick="showMessage()">Open your surprise 💌</button>
+  </div>
+
+  <div id="message" class="message">
+    <div class="love">🥹❤️</div>
+    <div class="big">I'M REALLY SORRY...</div>
+    <p>
+      for being the <b>most annoying person in your life</b> 😭😂
+      <br><br>
+      But honestly...
+      <br>
+      I <b>loveeeeeee you soooo much</b> 🫶🏻❤️
+    </p>
+    <p class="big">AND BTW...</p>
+    <div class="love">🎉 HAPPY 8 MONTHS, MY LOVE! 🎉</div>
+    <p>
+      8 months of us. ❤️<br>
+      8 months of love, laughs, fights, annoying each other,
+      making up, and choosing each other again and again. 🥹
+      <br><br>
+      And if I had to choose all over again...
+      <br>
+      <b>I would still choose you. Every. Single. Time. ❤️</b>
+    </p>
+    <div class="signature">I love youuuuu sooo muchhhhhh! 💋💕</div>
+  </div>
+</div>
+
+<script>
+function showMessage() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("message").style.display = "block";
+  for(let i=0;i<18;i++){
+    const h=document.createElement("div");
+    h.textContent=["❤️","💖","💕","💗","💘"][Math.floor(Math.random()*5)];
+    h.style.position="fixed";
+    h.style.left=Math.random()*100+"vw";
+    h.style.top="55vh";
+    h.style.fontSize=(20+Math.random()*25)+"px";
+    h.style.zIndex=10;
+    h.style.pointerEvents="none";
+    document.body.appendChild(h);
+    h.animate(
+      [{transform:"translateY(0) scale(.7)",opacity:1},
+       {transform:"translateY(-70vh) scale(1.5) rotate(25deg)",opacity:0}],
+      {duration:1800+Math.random()*1200,easing:"ease-out"}
+    ).onfinish=()=>h.remove();
+  }
+}
+</script>
+</body>
+</html>
